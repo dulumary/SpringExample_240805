@@ -17,7 +17,7 @@ public class ReviewController {
 	private ReviewService reviewService;
 	
 	// parameter로 전달 받은 id와 일치하는 리뷰 정보를 json으로 Response 담는다.
-	@RequestMapping("/")
+	@RequestMapping("")
 	@ResponseBody
 	public Review review(@RequestParam("id") int id) {
 		// request Parameter 
