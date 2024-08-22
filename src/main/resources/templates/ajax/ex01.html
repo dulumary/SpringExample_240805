@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX 예제</title>
+</head>
+<body>
+
+	<h2>AJAX 테스트</h2>
+	
+	<button type="button" id="requestBtn">요청</button>
+	
+	<h4><span>이름 : </span><span id="nameSpan">김인규</span></h4>
+	<h4><span>나이 : </span><span id="ageSpan">20</span></h4>
+
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function() {
+			
+			$("#requestBtn").on("click", function() {
+				
+				// /ajax/person
+				$.ajax({
+					type:"get"
+					, url:"/ajax/person"
+					, data:{"name":"유재석", "birthday":"20030823"}
+					, success:function(data) {
+						// {"name":"김인규", "age":24}
+						// jquery 가 response 담긴 json 문자열을 객체로 변환한 결과를 사용한다. 
+						console.log(data.name + " " + data.age);
+						
+						$("#nameSpan").text(data.name);
+						$("#ageSpan").text(data.age);
+					}
+					, error:function() {
+						alert("에러!!");
+					}
+				});
+				
+				
+			});
+			
+		});
+	
+	</script>
+	
+</body>
+</html>
